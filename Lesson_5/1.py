@@ -40,17 +40,27 @@ for key in company.keys():
     print()
 
 print()
-print(f'Средняя прибыль предприятий за год: {avg_val}')
+print(f'Средняя прибыль предприятий за год: {avg_val:.2f}')
 
 min_avg = []
 max_avg = []
+avg_avg = []
 
 for key in company.keys():
     if company[key][4] > avg_val:
         max_avg.append(key)
     
     if company[key][4] < avg_val:
-        min_avg.append(key)    
+        min_avg.append(key)
+    
+    if company[key][4] == avg_val:
+        avg_avg.append(key)    
 
-print(f'Предприятия, чья прибыль выше среднего: {", ".join(max_avg)}')
-print(f'Предприятия, чья прибыль ниже среднего: {", ".join(min_avg)}')
+if max_avg:
+    print(f'Предприятия, чья прибыль выше среднего: {", ".join(max_avg)}')
+
+if max_avg:
+    print(f'Предприятия, чья прибыль ниже среднего: {", ".join(min_avg)}')
+
+if avg_avg:
+    print(f'Предприятия, чья прибыль равна средней: {", ".join(avg_avg)}')
