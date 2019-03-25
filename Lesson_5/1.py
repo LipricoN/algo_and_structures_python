@@ -7,6 +7,7 @@
 """
 
 from collections import defaultdict
+from math import fsum
 
 num_com = int(input('Введите количество предприятий: '))
 
@@ -16,12 +17,10 @@ for n in range(num_com):
     name = input(f'Введите название организации {n+1}: ')
     all_val = input('Введите прибыль за четыре квартала разделенную пробелами: ').split()
     all_val = list(map(float, all_val))
+    company[name].extend(all_val)
+    avg = sum(company[name])
+    company[name].append(avg)
     
-    tmp_val = 0
-    for n in all_val:
-        tmp_val += n
-        company[name].append(n)
-    company[name].append(tmp_val)
 
 avg_val = 0
 
