@@ -9,3 +9,29 @@
 Также сообщать пользователю о невозможности деления на ноль,
 если он ввел 0 в качестве делителя.
 """
+
+
+def math_fun(a, b, m_fun):
+    if m_fun == '+':
+        print(f'a = {a}, b = {b}, a + b = {a + b}', end='\n\n')
+    elif m_fun == '-':
+        print(f'a = {a}, b = {b}, a - b = {a - b}', end='\n\n')
+    elif m_fun == '/':
+        print(f'a = {a}, b = {b}, a / b = {a / b}', end='\n\n')
+    elif m_fun == '*':
+        print(f'a = {a}, b = {b}, a * b = {a * b}', end='\n\n')
+
+
+if __name__ == '__main__':
+    while True:
+        print('Введите числа a ,b и знак операции, для выхода вместо знака операции введите "0"')
+        a = int(input('Введите число а: '))
+        b = int(input('Введите число b: '))
+        m_fun = input('Введите знак опирации: ')
+
+        if m_fun == '0':
+            break
+        elif m_fun == '+' or m_fun == '-' or m_fun == '*' or m_fun == '/':
+            math_fun(a, b, m_fun)
+        else:
+            print('Введен неверный знак операции')
