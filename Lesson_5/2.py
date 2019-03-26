@@ -11,10 +11,11 @@ class HexOperations():
     def __init__(self, hex_deque):
         self.num = hex_deque
         self.summ = deque()
+        self.mult = deque()
     
     def __add__(self, obj):
-        num_add = self.num
-        obj_add = obj.num
+        num_add = self.num.copy()
+        obj_add = obj.num.copy()
         
         if len(num_add) < len(obj_add):
             for i in range(len(obj_add) - len(num_add)):
@@ -39,11 +40,36 @@ class HexOperations():
             self.summ.popleft()
                
         return self.summ
+    
+    def __mul__(self, obj):
+        num_mul = self.num
+        obj_mult = obj.num
+        
+        mult_1 = ''.join(num_mul)
+        mult_1 = int(mult_1, 16)
+        mult_2 = ''.join(obj_mult)
+        mult_2 = int(mult_2, 16)
+        
+        tmp_mult = mult_1 * mult_2
+        tmp_mult = hex(tmp_mult)
+        tmp_mult = tmp_mult.replace('0x', '')
+        
+        self.mult = deque(tmp_mult)
+        
+        for i in range(len(self.mult)):
+            self.mult[i] = self.mult[i].upper()
+        
+        return self.mult
+        
+            
 
 num_1 = deque(input('Введите первое число: '))
 num_2 = deque(input('Введите первое второе: '))
 
+print(f'Введены два шестнадцатеричных числа: {num_1}, {num_2}. Найти сумму и произведение чисел.')
+
 num_1_hex = HexOperations(num_1)
 num_2_hex = HexOperations(num_2)
 
-print(num_1_hex + num_2_hex)
+print(f'Сумма чисел равна: {num_1_hex + num_2_hex}')
+print(f'Произведение чисел равно: {num_1_hex * num_2_hex}')
