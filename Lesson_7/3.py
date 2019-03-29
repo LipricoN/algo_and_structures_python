@@ -26,7 +26,7 @@ def find_mediana(mass, pos=None):
             equal += 1
     
     if abs(less - great) <= equal:
-        return mass[pos], less, great, equal
+        return mass[pos], less, great, equal-1
     else:
         return find_mediana(mass, pos + 1)
 
