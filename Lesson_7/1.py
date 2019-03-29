@@ -6,6 +6,7 @@
 """
 
 from random import randint
+import timeit
 
 def sort_mass(mass):
     count_1 = len(mass)
@@ -21,5 +22,10 @@ def sort_mass(mass):
 if __name__ == '__main__':
     mass = [randint(-100, 99) for _ in range(randint(20, 100))]
     print(f'Исходный одномерный целочисленный массив:\n{mass}', end='\n\n')
+    
     sorted_mass = sort_mass(mass)
-    print(f'Отсортированный массив по убыванию:\n{sorted_mass}')
+    print(f'Отсортированный массив по убыванию:\n{sorted_mass}', end='\n\n')
+    
+    time = timeit.timeit("sort_mass(mass)", \
+        setup="from __main__ import sort_mass, mass", number=10)
+    print(f'Время выполнения сортировки: {time}')
