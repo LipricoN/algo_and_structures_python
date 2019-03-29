@@ -13,10 +13,6 @@ class MyClassSlots():
     __slots__ = ['mass_1', 'mass_2', 'plug_1', 'plug_2']
     
     def __init__(self, mass_1, mass_2, plug_1=0, plug_2=0):
-        '''
-        Не совсем понимаю, почему при выводе соваря атрибутов 
-        я не вижу plug_1, plug_2?
-        '''
         self.mass_1 = mass_1
         self.mass_2 = mass_2
         self.plug_1 = plug_1
@@ -33,6 +29,8 @@ class MyClassNotSlots():
     def __init__(self, mass_1, mass_2, plug_1=0, plug_2=0):
         self.mass_1 = mass_1
         self.mass_2 = mass_2
+        self.plug_1 = plug_1
+        self.plug_2 = plug_2        
     
     def summ_mass(self):
         summ = []
